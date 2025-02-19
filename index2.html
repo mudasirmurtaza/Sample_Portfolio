@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <style>
+        :root {
+            --navy: #0A192F;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892B0;
+            --light-slate: #A8B2D1;
+            --lightest-slate: #CCD6F6;
+            --white: #E6F1FF;
+            --accent: #64FFDA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--navy);
+            color: var(--slate);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--lightest-slate);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 5rem;
+            min-height: 100vh;
+            background: linear-gradient(to right, var(--navy), var(--light-navy));
+            color: var(--lightest-slate);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Social Links */
+        .social-links {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .social-links a {
+            width: 3rem;
+            height: 3rem;
+            background: var(--light-navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            background: var(--lightest-navy);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 4rem;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--light-navy);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--lightest-slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card {
+            position: relative;
+        }
+
+        .project-card .links {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .project-card .links a {
+            color: var(--accent);
+            margin-left: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .project-card .links a:hover {
+            color: var(--white);
+        }
+        
+        .project-card {
+            position: relative;
+        }
+    
+        .project-card .links {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    
+        .project-card .links a {
+            color: var(--accent);
+            margin-left: 0.5rem;
+            transition: color 0.3s;
+        }
+    
+        .project-card .links a:hover {
+            color: var(--white);
+        }
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--lightest-navy);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--light-navy);
+            color: var(--slate);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .social-links {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                transform: none;
+                margin-top: 2rem;
+            }
+
+            .hero {
+                padding-top: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-image">
+                <img src="profile.png" alt="Your Name">
+            </div>
+            <h1>Mudasir Murtaza</h1>
+            <p>Computer Science Student & Project Manager</p>
+            <p>Passionate about Data Engineering & Cloud Computing</p>
+        </div>
+    </section>
+
+ <!-- Social Links -->
+     <div class="social-links">
+        <a href="https://github.com/mudasirmurtaza" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/mudasir-murtaza/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://youtube.com/@yourusername" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+   
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Qauid-e-Awam Univesity of Engineering Science and Technology, Nawabshah</h3>
+                    <p>Bachelor of Science, Computer Science</p>
+                    <p>2021 - 2025</p>
+                </div>
+            </div>
+        </section>
+
+ <!-- Certifications Section -->
+<section id="certifications" class="section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="card-grid">
+        <div class="card project-card">
+            <div class="links">
+                <a href="your-azure-credential-url" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <h3>Microsoft Certified: Azure AI Fundamentals</h3>
+            <p>Microsoft</p>
+            <p>2024</p>
+        </div>
+        
+        <div class="card project-card">
+            <div class="links">
+                <a href="your-datacamp-credential-url" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <h3>DataCamp Certified: AI Fundamentals</h3>
+            <p>DataCamp</p>
+            <p>2024</p>
+        </div>
+
+        <div class="card project-card">
+            <div class="links">
+                <a href="your-datacamp-credential-url" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <h3>Salesforce AI Associate</h3>
+            <p>Sales Force</p>
+            <p>2024</p>
+        </div>
+
+        <div class="card project-card">
+            <div class="links">
+                <a href="your-datacamp-credential-url" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <h3>GitHub Foundations Certified</h3>
+            <p>GitHub</p>
+            <p>2024</p>
+        </div>
+
+        <div class="card project-card">
+            <div class="links">
+                <a href="your-datacamp-credential-url" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <h3>Postman API Fundamentals Student Expert</h3>
+            <p>Postman</p>
+            <p>2024</p>
+        </div>
+
+    </div>
+</section>
+
+    
+        
+    
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="card-grid">
+                <div class="card project-card">
+                    <div class="links">
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                    <h3>Data Pipeline Automation</h3>
+                    <p>Built an automated ETL pipeline using Python and AWS services</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Data Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="card">
+                <p><i class="fas fa-envelope"></i> mudasirmurtaza20@gmail.com</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
